@@ -1,0 +1,43 @@
+{
+    "name": "bishopm/learningchurch",
+    "description": "Laravel based blog site",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Bishop",
+            "email": "michael@learningchurch.org",
+            "homepage": "http://learningchurch.org"
+        }
+    ],
+    "homepage": "https://github.com/bishopm/learningchurch",
+    "keywords": ["Laravel", "Church"],
+    "require": {
+        "illuminate/support": "~12",
+	    "livewire/livewire": "~3",
+    	"filament/filament": "~4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bishopm\\Learningchurch\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bishopm\\Learningchurch\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bishopm\\Learningchurch\\Providers\\LearningchurchServiceProvider"
+            ],
+            "aliases": {
+                "Learningchurch": "Bishopm\\Learningchurch\\Facades\\Learningchurch"
+            }
+        }
+    }
+}
