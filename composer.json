@@ -13,7 +13,8 @@
     "keywords": ["Laravel", "Church"],
     "require": {
         "illuminate/support": "~12",
-	    "livewire/livewire": "~3"
+	    "livewire/livewire": "~3",
+        "filament/spatie-laravel-settings-plugin":"^3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
