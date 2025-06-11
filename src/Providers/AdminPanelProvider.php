@@ -2,6 +2,7 @@
 
 namespace Bishopm\Learningchurch\Providers;
 
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -28,12 +29,12 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Teal,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'Bishopm\Learningchurch\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'Bishopm\Learningchurch\Filament\Pages')
+            ->discoverResources(in: base_path('vendor/bishopm/learningchurch/src/Filament/Resources'), for: 'Bishopm\Learningchurch\Filament\Resources')
+            ->discoverPages(in: base_path('vendor/bishopm/learningchurch/src/Filament/Pages'), for: 'Bishopm\Learningchurch\Filament\Pages')
             ->pages([
                 Dashboard::class,
             ])
@@ -55,6 +56,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->userMenuItems([
+                Action::make('settings')
+                    ->url('/admin/settings')
+                    ->icon('heroicon-o-cog-6-tooth'),
+                Action::make('website')
+                    ->label('Website')
+                    ->url('/')
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-o-globe-alt'),
             ]);
     }
 }
