@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\People\Schemas;
+namespace Bishopm\Learningchurch\Filament\Resources\People\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;

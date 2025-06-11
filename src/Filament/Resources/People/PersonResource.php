@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\People;
+namespace Bishopm\Learningchurch\Filament\Resources\People;
 
-use App\Filament\Resources\People\Pages\CreatePerson;
-use App\Filament\Resources\People\Pages\EditPerson;
-use App\Filament\Resources\People\Pages\ListPeople;
-use App\Filament\Resources\People\Schemas\PersonForm;
-use App\Filament\Resources\People\Tables\PeopleTable;
+use Bishopm\Learningchurch\Filament\Resources\People\Pages\CreatePerson;
+use Bishopm\Learningchurch\Filament\Resources\People\Pages\EditPerson;
+use Bishopm\Learningchurch\Filament\Resources\People\Pages\ListPeople;
+use Bishopm\Learningchurch\Filament\Resources\People\Schemas\PersonForm;
+use Bishopm\Learningchurch\Filament\Resources\People\Tables\PeopleTable;
 use BackedEnum;
 use Bishopm\Learningchurch\Models\Person;
 use Filament\Resources\Resource;

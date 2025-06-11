@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Videos\Schemas;
+namespace Bishopm\Learningchurch\Filament\Resources\Videos\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;

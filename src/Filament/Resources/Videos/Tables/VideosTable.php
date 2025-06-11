@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Videos\Tables;
+namespace Bishopm\Learningchurch\Filament\Resources\Videos\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;

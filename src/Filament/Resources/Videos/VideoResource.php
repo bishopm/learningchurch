@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Videos;
+namespace Bishopm\Learningchurch\Filament\Resources\Videos;
 
-use App\Filament\Resources\Videos\Pages\CreateVideo;
-use App\Filament\Resources\Videos\Pages\EditVideo;
-use App\Filament\Resources\Videos\Pages\ListVideos;
-use App\Filament\Resources\Videos\Schemas\VideoForm;
-use App\Filament\Resources\Videos\Tables\VideosTable;
+use Bishopm\Learningchurch\Filament\Resources\Videos\Pages\CreateVideo;
+use Bishopm\Learningchurch\Filament\Resources\Videos\Pages\EditVideo;
+use Bishopm\Learningchurch\Filament\Resources\Videos\Pages\ListVideos;
+use Bishopm\Learningchurch\Filament\Resources\Videos\Schemas\VideoForm;
+use Bishopm\Learningchurch\Filament\Resources\Videos\Tables\VideosTable;
 use BackedEnum;
 use Bishopm\Learningchurch\Models\Video;
 use Filament\Resources\Resource;

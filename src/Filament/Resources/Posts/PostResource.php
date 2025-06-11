@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Posts;
+namespace Bishopm\Learningchurch\Filament\Resources\Posts;
 
-use App\Filament\Resources\Posts\Pages\CreatePost;
-use App\Filament\Resources\Posts\Pages\EditPost;
-use App\Filament\Resources\Posts\Pages\ListPosts;
-use App\Filament\Resources\Posts\Schemas\PostForm;
-use App\Filament\Resources\Posts\Tables\PostsTable;
+use Bishopm\Learningchurch\Filament\Resources\Posts\Pages\CreatePost;
+use Bishopm\Learningchurch\Filament\Resources\Posts\Pages\EditPost;
+use Bishopm\Learningchurch\Filament\Resources\Posts\Pages\ListPosts;
+use Bishopm\Learningchurch\Filament\Resources\Posts\Schemas\PostForm;
+use Bishopm\Learningchurch\Filament\Resources\Posts\Tables\PostsTable;
 use BackedEnum;
 use Bishopm\Learningchurch\Models\Post;
 use Filament\Resources\Resource;

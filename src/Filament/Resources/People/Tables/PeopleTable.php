@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\People\Tables;
+namespace Bishopm\Learningchurch\Filament\Resources\People\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;

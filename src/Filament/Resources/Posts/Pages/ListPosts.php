@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Posts\Pages;
+namespace Bishopm\Learningchurch\Filament\Resources\Posts\Pages;
 
-use App\Filament\Resources\Posts\PostResource;
+use Bishopm\Learningchurch\Filament\Resources\Posts\PostResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 

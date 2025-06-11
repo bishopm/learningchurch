@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Videos\Pages;
+namespace Bishopm\Learningchurch\Filament\Resources\Videos\Pages;
 
-use App\Filament\Resources\Videos\VideoResource;
+use Bishopm\Learningchurch\Filament\Resources\Videos\VideoResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 

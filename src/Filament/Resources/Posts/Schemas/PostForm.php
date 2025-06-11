@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Posts\Schemas;
+namespace Bishopm\Learningchurch\Filament\Resources\Posts\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
