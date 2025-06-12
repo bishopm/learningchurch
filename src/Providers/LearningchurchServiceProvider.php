@@ -3,6 +3,7 @@
 use Bishopm\Learningchurch\Http\Middleware\AdminRoute;
 use Illuminate\Support\ServiceProvider;
 use Bishopm\Learningchurch\Models\User;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -36,6 +37,11 @@ class LearningchurchServiceProvider extends ServiceProvider
         }
         Blade::componentNamespace('Bishopm\\Learningchurch\\Resources\\Views\\Components', 'learningchurch');
         Config::set('auth.providers.users.model','Bishopm\Learningchurch\Models\User');
+        Relation::morphMap([
+            'blog' => 'Bishopm\Learningchurch\Models\Post',
+            'liturgy' => 'Bishopm\Learningchurch\Models\Prayer',            
+            'video' => 'Bishopm\Learningchurch\Models\Video'
+        ]);
     }
 
     /**

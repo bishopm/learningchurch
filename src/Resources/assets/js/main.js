@@ -124,11 +124,6 @@
   window.addEventListener("load", initSwiper);
 
   /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
-
-  /**
    * Initiate glightbox
    */
   const glightbox = GLightbox({

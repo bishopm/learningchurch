@@ -1,21 +1,23 @@
 <?php
 
-namespace Bishopm\Learningchurch\Filament\Resources\Posts\Tables;
+namespace Bishopm\Learningchurch\Filament\Resources\Prayers\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 
-class PostsTable
+class PrayersTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
+                TextColumn::make('person.id')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('person.fullname')
@@ -26,9 +28,6 @@ class PostsTable
                     ->badge()
                     ->searchable(),
                 ToggleColumn::make('published'),
-                TextColumn::make('published_at')
-                    ->dateTime('j M Y')
-                    ->sortable(),
             ])
             ->filters([
                 //

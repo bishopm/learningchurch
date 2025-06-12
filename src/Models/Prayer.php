@@ -6,11 +6,11 @@ use Bishopm\Learningchurch\Traits\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Post extends Model
+class Prayer extends Model
 {
     use Taggable;
     
-    public $table = 'posts';
+    public $table = 'prayers';
     protected $guarded = ['id'];
 
     public function person(): BelongsTo

@@ -15,6 +15,10 @@ class Person extends Model
         'role' => 'array',
     ];
 
+    protected $appends = [
+        'fullname'
+    ];
+
     public function getFullNameAttribute()
     {
         return $this->firstname . ' ' . $this->surname;
