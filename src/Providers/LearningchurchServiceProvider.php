@@ -1,6 +1,7 @@
 <?php namespace Bishopm\Learningchurch\Providers;
 
 use Bishopm\Learningchurch\Http\Middleware\AdminRoute;
+use Bishopm\Learningchurch\Livewire\Search;
 use Illuminate\Support\ServiceProvider;
 use Bishopm\Learningchurch\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -35,6 +36,7 @@ class LearningchurchServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+        Livewire::component('search', Search::class);
         Blade::componentNamespace('Bishopm\\Learningchurch\\Resources\\Views\\Components', 'learningchurch');
         Config::set('auth.providers.users.model','Bishopm\Learningchurch\Models\User');
         Relation::morphMap([

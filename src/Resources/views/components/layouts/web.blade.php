@@ -41,7 +41,7 @@
   <header id="header" class="header position-relative">
     <div class="container-fluid container-xl position-relative">
       <div class="top-row d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-end">
+        <a href="{{url('/')}}" class="logo d-flex align-items-end">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <img src="{{asset('learningchurch/images/logo.png')}}" alt="LearningChurch Logo">
           <h4 class="sitename">LearningChurch</h4>
@@ -53,11 +53,7 @@
             <a target="_blank" href="https://www.youtube.com/@LearningChurch" class="youtube"><i class="bi bi-youtube"></i></a>
             <a target="_blank" href="https://www.instagram.com/LearningChurch" class="instagram"><i class="bi bi-instagram"></i></a>
           </div>
-
-          <form class="search-form ms-4">
-            <input type="text" placeholder="Search..." class="form-control">
-            <button type="submit" class="btn"><i class="bi bi-search"></i></button>
-          </form>
+          @livewire('search')          
         </div>
       </div>
 
@@ -112,39 +108,6 @@
             <li><a href="{{url('/blog')}}">Blog</a></li>
             <li><a href="{{url('/liturgy')}}">Liturgy</a></li>
             <li><a href="{{url('/videos')}}">Videos</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
           </ul>
         </div>
 
