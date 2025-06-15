@@ -43,6 +43,15 @@ class HomeController extends Controller
         return view('learningchurch::web.liturgy',$data);
     }
 
+    public function tag()
+    {
+        // Add tags to queries (and must still add links to tags on other pages)
+        $data['videos']=Video::orderBy('published_at','DESC')->get()->take(3);
+        $data['blogs']=Post::orderBy('published_at','DESC')->get()->take(3);
+        $data['prayers']=Prayer::orderBy('created_at','DESC')->get()->take(3);
+        return view('learningchurch::web.subject',$data);
+    }
+
     public function videos()
     {
         $data['videos']=Video::orderBy('published_at','DESC')->get();
