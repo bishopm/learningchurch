@@ -4,7 +4,7 @@
         <b>{{$liturgy->person->fullname}}</b> <span class="text-secondary"><small>{{date('j F Y',strtotime($liturgy->created_at))}}</small></span>
         <div>
             @foreach ($liturgy->tags as $tag)
-                <span class="badge bg-dark">{{strtoupper($tag->name)}}</span>
+                <a href="{{url('/subjects/' . $tag->slug)}}"><span class="badge bg-dark">{{strtoupper($tag->name)}}</span></a>
             @endforeach
         </div>
         {!! $liturgy->content !!}

@@ -2,12 +2,19 @@
 
 namespace Bishopm\Learningchurch\Http\Controllers;
 
+use Bishopm\Learningchurch\Models\Person;
 use Bishopm\Learningchurch\Models\Post;
 use Bishopm\Learningchurch\Models\Prayer;
+use Bishopm\Learningchurch\Models\Tag;
 use Bishopm\Learningchurch\Models\Video;
 
 class HomeController extends Controller
 {
+
+    public function about()
+    {
+        return view('learningchurch::web.about');
+    }
 
     public function blogs()
     {
@@ -43,12 +50,18 @@ class HomeController extends Controller
         return view('learningchurch::web.liturgy',$data);
     }
 
-    public function tag()
+    public function person($person){
+        $data['person']=Person::whereSlug($person)->first();
+        return view('learningchurch::web.person',$data);
+    }
+
+    public function tag($slug)
     {
-        // Add tags to queries (and must still add links to tags on other pages)
-        $data['videos']=Video::orderBy('published_at','DESC')->get()->take(3);
-        $data['blogs']=Post::orderBy('published_at','DESC')->get()->take(3);
-        $data['prayers']=Prayer::orderBy('created_at','DESC')->get()->take(3);
+        $tag=Tag::where('slug',$slug)->first();
+        $data['tag']=$tag->name;
+        $data['videos']=Video::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('published_at','DESC')->get()->take(3);
+        $data['blogs']=Post::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('published_at','DESC')->get()->take(3);
+        $data['prayers']=Prayer::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('created_at','DESC')->get()->take(3);
         return view('learningchurch::web.subject',$data);
     }
 

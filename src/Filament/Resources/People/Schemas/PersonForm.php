@@ -6,7 +6,10 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class PersonForm
 {
@@ -14,9 +17,17 @@ class PersonForm
     {
         return $schema
             ->components([
-                TextInput::make('firstname')
+                TextInput::make('firstname')->label('First name')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, ?string $state, Get $get){
+                        $set('slug', Str::slug($state . " " . $get('surname')));
+                    })
                     ->required(),
                 TextInput::make('surname')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, ?string $state, Get $get){
+                        $set('slug', Str::slug($get('firstname') . " " . $state));
+                    })
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
@@ -24,8 +35,6 @@ class PersonForm
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->image(),
-                TextInput::make('role')
-                    ->required(),
                 Toggle::make('active'),
             ]);
     }

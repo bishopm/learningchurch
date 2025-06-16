@@ -6,6 +6,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 // Website routes
 Route::middleware(['web'])->controller('\Bishopm\Learningchurch\Http\Controllers\HomeController')->group(function () {
     Route::get('/', 'home')->name('home');
+    Route::get('/about', 'about')->name('about');
     Route::get('/blog', 'blogs')->name('blogs');
     Route::get('/blog/{year}/{month}/{slug}', 'blog')->name('blog');
     Route::get('/liturgy', 'liturgies')->name('liturgies');
@@ -13,6 +14,7 @@ Route::middleware(['web'])->controller('\Bishopm\Learningchurch\Http\Controllers
     Route::get('/subjects/{tag}', 'tag')->name('tag');
     Route::get('/videos', 'videos')->name('videos');
     Route::get('/videos/{year}/{month}/{slug}', 'video')->name('video');
+    Route::get('/{person}', 'person')->name('person');
 });
 
 

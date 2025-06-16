@@ -46,13 +46,7 @@
           <img src="{{asset('learningchurch/images/logo.png')}}" alt="LearningChurch Logo">
           <h4 class="sitename">LearningChurch</h4>
         </a>
-
         <div class="d-flex align-items-center">
-          <div class="social-links">
-            <a target="_blank" href="https://www.facebook.com/LearningChurch" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a target="_blank" href="https://www.youtube.com/@LearningChurch" class="youtube"><i class="bi bi-youtube"></i></a>
-            <a target="_blank" href="https://www.instagram.com/LearningChurch" class="instagram"><i class="bi bi-instagram"></i></a>
-          </div>
           @livewire('search')          
         </div>
       </div>

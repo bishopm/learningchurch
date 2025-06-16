@@ -3,16 +3,12 @@
 use Bishopm\Learningchurch\Http\Middleware\AdminRoute;
 use Bishopm\Learningchurch\Livewire\Search;
 use Illuminate\Support\ServiceProvider;
-use Bishopm\Learningchurch\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Livewire\Livewire;
-use Illuminate\Support\Facades\Gate;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class LearningchurchServiceProvider extends ServiceProvider
 {
@@ -31,7 +27,7 @@ class LearningchurchServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../Http/routes.php');
         if (Schema::hasTable('settings')) {
-            Config::set('app.name',setting('general.site_name')); 
+            Config::set('app.name',setting('LearningChurch')); 
         }
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
