@@ -26,7 +26,7 @@
                                 </span>
                             </div>
                             <h2 class="post-title">
-                                <a href="blog-details.html" title="{{$blog->title}}">{{$blog->title}}</a>
+                                <a href="{{url('/blog/' . substr($blog->published_at,0,4) . '/' . substr($blog->published_at,5,2) . '/' . $blog->slug)}}" title="{{$blog->title}}">{{$blog->title}}</a>
                             </h2>
                         </div>
                     </article><!-- End Featured Post -->
@@ -49,7 +49,7 @@
                     <div class="col-lg-4">
                         <article class="featured-post">
                             <div class="post-img">
-                                <iframe height="315px" width="100%" src="{{$video->url}}">
+                                <iframe height="315px" width="100%" src="{{$video->url}}" allowfullscreen>
                                 </iframe>
                             </div>
                             <div class="post-content">
@@ -77,6 +77,8 @@
             <div>
                 <span class="description-title">Liturgy</span>
             </div>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row">
                 @foreach ($prayers as $prayer)
                     <div class="col-xl-4 col-lg-6">
@@ -90,7 +92,7 @@
                                     </span>
                                 </div>
                                 <h3 class="title">
-                                    <a href="blog-details.html">{{$prayer->title}}</a>
+                                    <a href="{{url('/liturgy/' . substr($prayer->created_at,0,4) . '/' . substr($prayer->created_at,5,2) . '/' . $prayer->slug)}}">{{$prayer->title}}</a>
                                 </h3>
                                 <div class="post-meta">
                                     <span>{{ \Carbon\Carbon::parse($prayer->created_at)->diffForHumans() }}</span>

@@ -14,7 +14,9 @@ Route::middleware(['web'])->controller('\Bishopm\Learningchurch\Http\Controllers
     Route::get('/subjects/{tag}', 'tag')->name('tag');
     Route::get('/videos', 'videos')->name('videos');
     Route::get('/videos/{year}/{month}/{slug}', 'video')->name('video');
-    Route::get('/{person}', 'person')->name('person');
+    if (substr(str_replace(env('APP_URL'),'',url()->current()),1)<>"admin"){
+        Route::get('/{person}', 'person')->name('person');
+    }
 });
 
 

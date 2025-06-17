@@ -52,7 +52,11 @@ class HomeController extends Controller
 
     public function person($person){
         $data['person']=Person::whereSlug($person)->first();
-        return view('learningchurch::web.person',$data);
+        if ($data['person']){
+            return view('learningchurch::web.person',$data);
+        } else {
+            abort(404);
+        }
     }
 
     public function tag($slug)
