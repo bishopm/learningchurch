@@ -1,107 +1,137 @@
 <x-learningchurch::layouts.web pageName="Home">
-    <!-- Blog Section -->
-    <div id="blogs">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Recent blog posts</h2>
-            <div>
-                <span class="description-title">Blog</span>
-            </div>
-        </div>
+    <!-- Most recent posts -->
+    <section id="trending-category" class="trending-category section">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="blog-grid">
-                @foreach ($blogs as $ndx=>$blog)
-                    @if ($ndx==0)
-                        <article class="blog-item featured" data-aos="fade-up">
-                    @else 
-                        <article class="blog-item" data-aos="fade-up">
-                    @endif
-                        <img src="{{asset('storage/' . $blog->image)}}" alt="Blog Image" class="img-fluid">
-                        <div class="blog-content">
-                            <div class="post-meta">
-                                <span class="date">{{date('j M',strtotime($blog->published_at))}}</span>
-                                <span class="category">
-                                    @foreach ($blog->tags as $tag)
-                                        <a href="{{url('/subjects/' . $tag->slug)}}"><span class="badge bg-dark">{{strtoupper($tag->name)}}</span></a>
-                                    @endforeach
-                                </span>
-                            </div>
-                            <h2 class="post-title">
-                                <a href="{{url('/blog/' . substr($blog->published_at,0,4) . '/' . substr($blog->published_at,5,2) . '/' . $blog->slug)}}" title="{{$blog->title}}">{{$blog->title}}</a>
-                            </h2>
-                        </div>
-                    </article><!-- End Featured Post -->
-                @endforeach
-            </div>
-        </div>
-    </div><!-- /Blog Hero Section -->
-
-    <!-- Category Section Section -->
-    <div id="videos">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>From our YouTube Channel</h2>
-            <div>
-                <span class="description-title">Videos</span>
-            </div>
-        </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-4 mb-4">
-                @foreach ($videos as $video)
+            <div class="container" data-aos="fade-up">
+                <div class="row g-5">
                     <div class="col-lg-4">
-                        <article class="featured-post">
-                            <div class="post-img">
-                                <iframe height="315px" width="100%" src="{{$video->url}}" allowfullscreen>
-                                </iframe>
+                        <div class="post-entry lg">
+                            @if ($latest[0]['image']>'')
+                                <a href="{{url('/' . $latest[0]['url'] . '/' . substr($latest[0]['date'],0,4) . '/' . substr($latest[0]['date'],5,2) . '/' . $latest[0]['slug'])}}">
+                                    <img src="{{asset('storage/' . $latest[0]['image'])}}" alt="" class="img-fluid">
+                                </a>
+                            @endif
+                            <div class="post-meta">
+                                @foreach ($latest[0]['tags'] as $tag)
+                                    <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
+                                @endforeach
+                                <span>{{date("j M 'y",strtotime($latest[0]['date']))}}</span>
                             </div>
-                            <div class="post-content">
-                                <div class="category-meta">
-                                    <span class="post-category">
-                                        @foreach ($video->tags as $tag)
-                                            <a href="{{url('/subjects/' . $tag->slug)}}"><span class="badge bg-dark">{{strtoupper($tag->name)}}</span></a>
+                            <h2><a href="{{url('/' . $latest[0]['url'] . '/' . substr($latest[0]['date'],0,4) . '/' . substr($latest[0]['date'],5,2) . '/' . $latest[0]['slug'])}}">{{$latest[0]['title']}}</a></h2>
+                            <p class="mb-4 d-block">{!!$latest[0]['excerpt']!!}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row g-5">
+                            @foreach ($latest as $recent)
+                                @if (!$loop->first)
+                                    @if ($loop->index==1 or $loop->index==4)
+                                        <div class="col-lg-4 border-start custom-border">
+                                    @endif
+                                        <div class="post-entry">
+                                            <a href="{{url('/' . $recent['url'] . '/' . substr($recent['date'],0,4) . '/' . substr($recent['date'],5,2) . '/' . $recent['slug'])}}"><img src="{{asset('storage/' . $recent['image'])}}" alt="" class="img-fluid"></a>
+                                            <div class="post-meta">
+                                                @foreach ($recent['tags'] as $tag)
+                                                    <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
+                                                @endforeach
+                                                <span>{{date("j M 'y",strtotime($recent['date']))}}</span>    
+                                            </div>
+                                            <h2><a href="{{url('/' . $recent['url'] . '/' . substr($recent['date'],0,4) . '/' . substr($recent['date'],5,2) . '/' . $recent['slug'])}}">{{$recent['title']}}</a></h2>
+                                            {!!$recent['excerpt']!!}
+                                        </div>
+                                    @if ($loop->index==4 or $loop->last)
+                                        </div>
+                                        @if ($loop->last and $loop->index < 5)
+                                            <div class="col-lg-4 border-start custom-border">
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endif
+                            @endforeach
+                    <!-- Utilities - search and tags -->
+                    <div class="col-lg-4">
+
+                        <div>
+                            @livewire('search')
+                            <h3 class="mt-5">Tag cloud</h3>
+                            Tags go here
+                            <h3>About us</h3>
+                        </div>
+
+                    </div> <!-- End Utils Section -->
+                </div>
+
+                </div> <!-- End .row -->
+            </div>
+        </div>
+    </section><!-- /Recent Section -->
+
+    <!-- Content Section -->
+    @foreach ($items as $name=>$type)
+        <section id="lifestyle-category" class="lifestyle-category section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <div class="section-title-container d-flex align-items-center justify-content-between">
+                    <h2>{{strtoupper(str_replace('_',' ',$name))}}</h2>
+                    <p><a href="{{url('/' . $type[0]['url'])}}">See All {{strtoupper(str_replace('_',' ',$name))}}</a></p>
+                </div>
+            </div><!-- End Section Title -->
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row g-5">
+                    @foreach ($type as $item)
+                        @if ($loop->first)
+                            <div class="col-lg-4">
+                                <div class="post-list lg">
+                                    <a href="{{url('/' . $item['url'] . '/' . substr($item['date'],0,4) . '/' . substr($item['date'],5,2) . '/' . $item['slug'])}}"><img src="{{asset('storage/' . $item['image'])}}" alt="" class="img-fluid"></a>
+                                    <div class="post-meta">
+                                        @foreach ($item['tags'] as $tag)
+                                            <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
                                         @endforeach
-                                    </span>
-                                    <div class="author-meta">
-                                        <span class="mx-3">{{$video->title}}</span>
-                                        <span>{{ \Carbon\Carbon::parse($video->published_at)->diffForHumans() }}</span>
+                                        <span>{{date("j M 'y",strtotime($item['date']))}}</span>    
                                     </div>
+                                    <h2><a href="{{url('/' . $item['url'] . '/' . substr($item['date'],0,4) . '/' . substr($item['date'],5,2) . '/' . $item['slug'])}}">{{$item['title']}}</a></h2>
+                                    <p class="mb-4 d-block">{!!$item['excerpt']!!}</p>
                                 </div>
-                            </div>
-                        </article>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <div id="liturgy">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Prayers for worship</h2>
-            <div>
-                <span class="description-title">Liturgy</span>
-            </div>
-        </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row">
-                @foreach ($prayers as $prayer)
-                    <div class="col-xl-4 col-lg-6">
-                        <article class="list-post">
-                            <div class="post-content">
-                                <div class="category-meta">
-                                    <span class="post-category">
-                                        @foreach ($prayer->tags as $tag)
-                                            <a href="{{url('/subjects/' . $tag->slug)}}"><span class="badge bg-dark">{{strtoupper($tag->name)}}</span></a>
-                                        @endforeach
-                                    </span>
-                                </div>
-                                <h3 class="title">
-                                    <a href="{{url('/liturgy/' . substr($prayer->created_at,0,4) . '/' . substr($prayer->created_at,5,2) . '/' . $prayer->slug)}}">{{$prayer->title}}</a>
-                                </h3>
+                        @elseif ($loop->index < 3)
+                            <div class="post-list border-bottom">
                                 <div class="post-meta">
-                                    <span>{{ \Carbon\Carbon::parse($prayer->created_at)->diffForHumans() }}</span>
-                                </div>
+                                    @foreach ($item['tags'] as $tag)
+                                        <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
+                                    @endforeach
+                                    <span>{{date("j M 'y",strtotime($item['date']))}}</span>    
+                                </div>    
+                                <h2><a href="{{url('/' . $item['url'] . '/' . substr($item['date'],0,4) . '/' . substr($item['date'],5,2) . '/' . $item['slug'])}}">{{$item['title']}}</a></h2>
                             </div>
-                        </article>
-                    </div>
-                @endforeach
+                            @if ($loop->index==2)
+                                </div>
+                            @endif
+                        @elseif ($loop->index > 2)
+                            @if ($loop->index ==3 or $loop->index == 8)
+                                @if ($loop->index==3)
+                                    <div class="col-lg-8">
+                                        <div class="row g-5">
+                                @endif
+                                <div class="col-lg-6 border-start custom-border">
+                            @endif
+                            <div class="post-list">
+                                <a href="{{url('/' . $item['url'] . '/' . substr($item['date'],0,4) . '/' . substr($item['date'],5,2) . '/' . $item['slug'])}}"><img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid"></a>
+                                <div class="post-meta">
+                                    @foreach ($item['tags'] as $tag)
+                                        <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
+                                    @endforeach
+                                    <span>{{date("j M 'y",strtotime($item['date']))}}</span>      
+                                </div>
+                                <h2><a href="{{url('/' . $item['url'] . '/' . substr($item['date'],0,4) . '/' . substr($item['date'],5,2) . '/' . $item['slug'])}}">{{$item['title']}}</a></h2>
+                            </div>
+                            @if ($loop->index==7 or $loop->index==12)
+                                @if ($loop->index==7)
+                                    </div>
+                                @endif
+                            @endif
+                        @endif
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </div>
+        </section><!-- /Content Section -->
+    @endforeach
 </x-learningchurch::layouts.web>

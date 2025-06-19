@@ -1,7 +1,7 @@
 /**
-* Template Name: Blogy
-* Template URL: https://bootstrapmade.com/blogy-bootstrap-blog-template/
-* Updated: Feb 22 2025 with Bootstrap v5.3.3
+* Template Name: ZenBlog
+* Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+* Updated: Aug 08 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -32,9 +32,7 @@
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
-  if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-  }
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
   /**
    * Hide mobile nav on same-page/hash links
@@ -122,12 +120,5 @@
   }
 
   window.addEventListener("load", initSwiper);
-
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
 
 })();

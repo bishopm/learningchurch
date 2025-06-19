@@ -31,9 +31,56 @@ class HomeController extends Controller
 
     public function home()
     {
-        $data['videos']=Video::orderBy('published_at','DESC')->get()->take(3);
-        $data['blogs']=Post::orderBy('published_at','DESC')->get()->take(3);
-        $data['prayers']=Prayer::orderBy('created_at','DESC')->get()->take(3);
+        $videos=Video::orderBy('published_at','DESC')->get()->take(3);
+        $blog_posts=Post::orderBy('published_at','DESC')->get()->take(3);
+        $liturgy=Prayer::orderBy('created_at','DESC')->get()->take(3);
+        $latest=array();
+        foreach ($videos as $video){
+            $thisvid=[
+                'title' =>$video->title,
+                'excerpt' =>$video->description,
+                'date' => $video->published_at,
+                'image' => $video->image,
+                'tags'=>$video->tags,
+                'slug'=>$video->slug,
+                'url'=>'videos'
+            ];
+            $latest[strtotime($video->published_at)][]=$thisvid;
+            $data['items']['videos'][]=$thisvid;
+        }
+        foreach ($blog_posts as $blog){
+            $thisblog=[
+                'title' =>$blog->title,
+                'excerpt' =>$blog->description,
+                'date' => $blog->published_at,
+                'image' => $blog->image,
+                'tags'=>$blog->tags,
+                'slug'=>$blog->slug,
+                'url'=>'blog'
+            ];
+            $latest[strtotime($blog->published_at)][]=$thisblog;
+            $data['items']['blog_posts'][]=$thisblog;
+        }
+        foreach ($liturgy as $prayer){
+            $thispray=[
+                'title' =>$prayer->title,
+                'excerpt' =>$prayer->description,
+                'date' => $prayer->created_at,
+                'image' => $prayer->image,
+                'tags'=>$prayer->tags,
+                'slug'=>$prayer->slug,
+                'url'=>'liturgy'
+            ];
+            $latest[strtotime($prayer->created_at)][]=$thispray;
+            $data['items']['liturgy'][]=$thispray;
+        }
+        arsort($latest);
+        foreach ($latest as $dates){
+            foreach ($dates as $item){
+                $data['latest'][]=$item;
+            }
+        }
+        $data['latest']=array_slice($data['latest'],0,7);
         return view('learningchurch::web.home',$data);
     }
 
