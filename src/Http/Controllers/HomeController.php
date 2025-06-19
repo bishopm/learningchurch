@@ -37,6 +37,7 @@ class HomeController extends Controller
 
     public function home()
     {
+        $data=array();
         $videos=Video::orderBy('published_at','DESC')->get()->take(3);
         $blog_posts=Post::orderBy('published_at','DESC')->get()->take(3);
         $liturgy=Prayer::orderBy('created_at','DESC')->get()->take(3);
@@ -108,7 +109,7 @@ class HomeController extends Controller
         if ($data['person']){
             return view('learningchurch::web.person',$data);
         } else {
-            return redirect()->route('tag',$person);
+            abort('404');
         }
     }
 
