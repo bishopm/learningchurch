@@ -1,5 +1,5 @@
 <x-learningchurch::layouts.web pageName="Blog">
-    <div class="container">
+    <div class="container my-5">
         <h1>{{$blog->title}}</h1>
         <b>{{$blog->person->fullname}}</b> <span class="text-secondary"><small>{{date('j F Y',strtotime($blog->published_at))}}</small></span>
         <div>

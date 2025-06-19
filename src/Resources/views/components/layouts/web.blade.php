@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>LearningChurch</title>
+  <title>LearningChurch - {{$pageName}}</title>
   <meta name="description" content="LearningChurch: we make practical resources for the local church. Browse our site for lectionary devotionals, ministry and tech training.">
   <meta name="keywords" content="">
 
@@ -39,59 +39,54 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
       <a href="{{url('/')}}" class="logo d-flex align-items-center me-auto me-xl-0">
-        <img src="https://learningchurch.org/themes/learningchurch/assets/images/lc.png"> 
+        <img src="{{asset('/learningchurch/img/lc.png')}}"> 
         <span class="text-white" style="font-family:'Oswald'">LearningChurch</span>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
           <li class="text-white dropdown">
-            <a class="text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/blog">
+            <a class="text-white" href="{{url('/')}}/blog">
               <b>Blogs</b>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/blog/kym">Kym</a></li>
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/blog/michael">Michael</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/blog/kym">Kym</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/blog/michael">Michael</a></li>
             </ul>
           </li>
           <li>
-            <a class="text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/devotional">
+            <a class="text-white" href="{{url('/')}}/devotional">
               <b>Devotional</b>
             </a>
           </li>
           <li class="nav-item  text-white">
-            <a class="nav-link text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/good-to-know">
-              <b>Good to Know</b>
-            </a>
-          </li>
-          <li class="nav-item  text-white">
-            <a class="nav-link text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/liturgy">
+            <a class="nav-link text-white" href="{{url('/')}}/liturgy">
               <b>Liturgy</b>
             </a>
           </li>
           <li class="nav-item  text-white dropdown">
-            <a class="nav-link text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/ministry">
+            <a class="nav-link text-white" href="{{url('/')}}/ministry">
               <b>Ministry</b>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/ministry/preaching">Preaching</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/preaching">Preaching</a></li>
             </ul>
           </li>
           <li class="nav-item  text-white dropdown">
-            <a class="nav-link text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/spirituality">
+            <a class="nav-link text-white" href="{{url('/')}}/spirituality">
               <b>Spirituality</b>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/spirituality/prayer">Prayer</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/prayer">Prayer</a></li>
             </ul>
           </li>
           <li class="nav-item  text-white dropdown">
-            <a class="nav-link text-white" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/tech">
+            <a class="nav-link text-white" href="{{url('/')}}/tech">
               <b>Tech</b>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/tech/obsidian">Obsidian</a></li>
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/tech/openlp">OpenLP</a></li>
-              <li><a class="dropdown-item" href="https://web.archive.org/web/20240901020849/https://learningchurch.org/tech/tech-tips">Tech tips</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/obsidian">Obsidian</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/openlp">OpenLP</a></li>
+              <li><a class="dropdown-item" href="{{url('/')}}/tech-tips">Tech tips</a></li>
             </ul>
           </li>
         </ul>
@@ -105,7 +100,7 @@
 
     </div>
   </header>
-  <img src="https://learningchurch.org/themes/learningchurch/assets/images/siteheader.png" width="100%" class="img-fluid">
+  <img src="{{asset('/learningchurch/img/siteheader.png')}}" width="100%" class="img-fluid">
   <main class="main">
     {{$slot}}
   </main>
@@ -114,7 +109,7 @@
 
     <div class="container footer-top">
       <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
+        <div class="col-lg-6 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
             <span class="sitename">LearningChurch</span>
           </a>
@@ -122,6 +117,8 @@
             We make practical resources for the local church<br>
             <a class="text-white" href="{{url('/about')}}"><u>More about us</u></a><br><br>
           </div>
+        </div>
+        <div class="col-lg-6 col-md-6 footer-about">
           <h5>Connect with us</h5>
           <div class="social-links d-flex mt-4">
             <a href="https://www.facebook.com/LearningChurch" target="_blank"><i class="text-white bi bi-facebook"></i></a>
@@ -129,24 +126,17 @@
             <a href="https://www.youtube.com/@LearningChurch" target="_blank"><i class="text-white bi bi-youtube"></i></a>
           </div>
         </div>
-
-        <div class="col-lg-8 col-md-3 footer-links">
-          <h4>Recent Posts</h4>
-          <ul>
-            
-          </ul>
-        </div>
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>©{{date('Y')}} <span>Copyright</span> <strong class="px-1 sitename">LearningChurch</strong> <span>All Rights Reserved</span></p>
+      <p>©{{date('Y')}} <strong class="px-1 sitename">LearningChurch</strong></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Based on a theme by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Based on a theme by <a target="_blank" href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 

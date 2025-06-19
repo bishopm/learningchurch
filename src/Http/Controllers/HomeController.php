@@ -16,9 +16,15 @@ class HomeController extends Controller
         return view('learningchurch::web.about');
     }
 
-    public function blogs()
+    public function blogs($author="")
     {
-        $data['blogs']=Post::orderBy('published_at','DESC')->get();
+        if ($author=="michael"){
+            $data['blogs']=Post::where('person_id',1)->orderBy('published_at','DESC')->get();
+        } elseif ($author=='kym'){
+            $data['blogs']=Post::where('person_id',2)->orderBy('published_at','DESC')->get();
+        } else {
+            $data['blogs']=Post::orderBy('published_at','DESC')->get();
+        }
         return view('learningchurch::web.blogs',$data);
     }
 
@@ -102,17 +108,21 @@ class HomeController extends Controller
         if ($data['person']){
             return view('learningchurch::web.person',$data);
         } else {
-            abort(404);
+            return redirect()->route('tag',$person);
         }
     }
 
     public function tag($slug)
     {
         $tag=Tag::where('slug',$slug)->first();
-        $data['tag']=$tag->name;
-        $data['videos']=Video::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('published_at','DESC')->get()->take(3);
-        $data['blogs']=Post::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('published_at','DESC')->get()->take(3);
-        $data['prayers']=Prayer::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('created_at','DESC')->get()->take(3);
+        if ($tag){
+            $data['tag']=$tag->name;
+            $data['videos']=Video::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('published_at','DESC')->get()->take(3);
+            $data['blogs']=Post::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('published_at','DESC')->get()->take(3);
+            $data['prayers']=Prayer::withWhereHas('tags', function ($q) use ($slug) { $q->where('slug',$slug);})->orderBy('created_at','DESC')->get()->take(3);
+        } else {
+            $data['notfound']=$slug;
+        }
         return view('learningchurch::web.subject',$data);
     }
 

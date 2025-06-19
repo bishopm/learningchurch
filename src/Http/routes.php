@@ -7,7 +7,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 Route::middleware(['web'])->controller('\Bishopm\Learningchurch\Http\Controllers\HomeController')->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
-    Route::get('/blog', 'blogs')->name('blogs');
+    Route::get('/blog/{author?}', 'blogs')->name('blogs');
     Route::get('/blog/{year}/{month}/{slug}', 'blog')->name('blog');
     Route::get('/liturgy', 'liturgies')->name('liturgies');
     Route::get('/liturgy/{year}/{month}/{slug}', 'liturgy')->name('liturgy');

@@ -1,5 +1,5 @@
 <x-learningchurch::layouts.web pageName="Liturgies">
-    <div class="container">
+    <div class="container my-5">
         <h1>Liturgies</h1>
         <ul class="list-unstyled">
         @foreach ($liturgies as $liturgy)

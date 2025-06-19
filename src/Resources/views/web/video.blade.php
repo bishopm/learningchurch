@@ -1,5 +1,5 @@
 <x-learningchurch::layouts.web pageName="Video">
-    <div class="container">
+    <div class="container my-5">
         <h1>{{$video->title}}</h1>
         <span class="text-secondary"><small>{{date('j F Y',strtotime($video->published_at))}}</small></span>
         <div>

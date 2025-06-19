@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('slug', 191);
             $table->text('content')->default(null);
             $table->text('description')->default(null);
-            $table->string('image', 191);
+            $table->string('image', 191)->nullable();
             $table->tinyInteger('published')->default(0);
             $table->timestamp('created_at')->nullable()->default(null);
             $table->timestamp('updated_at')->nullable()->default(null);
