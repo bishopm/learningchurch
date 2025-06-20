@@ -28,17 +28,17 @@
                                     @if ($loop->index==1 or $loop->index==4)
                                         <div class="col-lg-4 border-start custom-border">
                                     @endif
-                                        <div class="post-entry">
-                                            <a href="{{url('/' . $recent['url'] . '/' . substr($recent['date'],0,4) . '/' . substr($recent['date'],5,2) . '/' . $recent['slug'])}}"><img src="{{asset('storage/' . $recent['image'])}}" alt="" class="img-fluid"></a>
-                                            <div class="post-meta">
-                                                @foreach ($recent['tags'] as $tag)
-                                                    <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
-                                                @endforeach
-                                                <span>{{date("j M 'y",strtotime($recent['date']))}}</span>    
-                                            </div>
-                                            <h2><a href="{{url('/' . $recent['url'] . '/' . substr($recent['date'],0,4) . '/' . substr($recent['date'],5,2) . '/' . $recent['slug'])}}">{{$recent['title']}}</a></h2>
-                                            {!!$recent['excerpt']!!}
+                                    <div class="post-entry">
+                                        <a href="{{url('/' . $recent['url'] . '/' . substr($recent['date'],0,4) . '/' . substr($recent['date'],5,2) . '/' . $recent['slug'])}}"><img src="{{asset('storage/' . $recent['image'])}}" alt="" class="img-fluid"></a>
+                                        <div class="post-meta">
+                                            @foreach ($recent['tags'] as $tag)
+                                                <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
+                                            @endforeach
+                                            <span>{{date("j M 'y",strtotime($recent['date']))}}</span>    
                                         </div>
+                                        <h2><a href="{{url('/' . $recent['url'] . '/' . substr($recent['date'],0,4) . '/' . substr($recent['date'],5,2) . '/' . $recent['slug'])}}">{{$recent['title']}}</a></h2>
+                                        {!!$recent['excerpt']!!}
+                                    </div>
                                     @if ($loop->index==4 or $loop->last)
                                         </div>
                                         @if ($loop->last and $loop->index < 5)
@@ -50,20 +50,17 @@
                             @endforeach
                     <!-- Utilities - search and tags -->
                     <div class="col-lg-4">
-
                         <div>
                             @livewire('search')
                             <h3 class="mt-5">Tag cloud</h3>
                             Tags go here
                             <h3>About us</h3>
                         </div>
-
                     </div> <!-- End Utils Section -->
                 </div>
 
                 </div> <!-- End .row -->
             </div>
-            @endif
         </div>
     </section><!-- /Recent Section -->
 
