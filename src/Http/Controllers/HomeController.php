@@ -38,9 +38,9 @@ class HomeController extends Controller
     public function home()
     {
         $data=array();
-        $videos=Video::orderBy('published_at','DESC')->get()->take(3);
-        $blog_posts=Post::orderBy('published_at','DESC')->get()->take(3);
-        $liturgy=Prayer::orderBy('created_at','DESC')->get()->take(3);
+        $videos=Video::orderBy('published_at','DESC')->get()->take(13);
+        $blog_posts=Post::orderBy('published_at','DESC')->get()->take(13);
+        $liturgy=Prayer::orderBy('created_at','DESC')->get()->take(13);
         $latest=array();
         foreach ($videos as $video){
             $thisvid=[
