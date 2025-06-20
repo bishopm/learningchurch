@@ -3,6 +3,7 @@
 namespace Bishopm\Learningchurch\Filament\Resources\Videos\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -55,6 +56,9 @@ class VideoForm
                                     ->required(),
                             ])
                     ]),
+                FileUpload::make('image')
+                    ->image()
+                    ->required(),
                 Toggle::make('published')
                     ->required(),
             ]);

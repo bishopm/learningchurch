@@ -51,6 +51,9 @@ class PrayerForm
                 RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
+                FileUpload::make('image')
+                    ->image()
+                    ->required(),
                 Toggle::make('published')
                     ->required()
                     ->default(0),
