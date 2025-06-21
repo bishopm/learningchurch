@@ -81,7 +81,7 @@ class HomeController extends Controller
             $latest[strtotime($prayer->created_at)][]=$thispray;
             $data['items']['liturgy'][]=$thispray;
         }
-        arsort($latest);
+        krsort($latest);
         foreach ($latest as $dates){
             foreach ($dates as $item){
                 $data['latest'][]=$item;
