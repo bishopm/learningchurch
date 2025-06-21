@@ -19,16 +19,27 @@
                             </div>
                             <h2><a href="{{url('/' . $latest[0]['url'] . '/' . substr($latest[0]['date'],0,4) . '/' . substr($latest[0]['date'],5,2) . '/' . $latest[0]['slug'])}}">{{$latest[0]['title']}}</a></h2>
                             <p class="mb-4 d-block">{!!$latest[0]['excerpt']!!}</p>
+                            <div class="post-entry">
+                                <a href="{{url('/' . $latest[1]['url'] . '/' . substr($latest[1]['date'],0,4) . '/' . substr($latest[1]['date'],5,2) . '/' . $latest[1]['slug'])}}"><img src="{{asset('storage/' . $latest[1]['image'])}}" alt="" class="img-fluid"></a>
+                                <div class="post-meta">
+                                    @foreach ($latest[1]['tags'] as $tag)
+                                        <a href="{{url('/subjects/' . $tag->slug)}}"><span class="date">{{$tag['name']}}</span></a> <span class="mx-1">•</span> 
+                                    @endforeach
+                                    <span>{{date("j M 'y",strtotime($latest[1]['date']))}}</span>    
+                                </div>
+                                <h2><a href="{{url('/' . $latest[1]['url'] . '/' . substr($latest[1]['date'],0,4) . '/' . substr($latest[1]['date'],5,2) . '/' . $latest[1]['slug'])}}">{{$latest[1]['title']}}</a></h2>
+                                {!!$latest[1]['excerpt']!!}
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="row g-5">
                             @foreach ($latest as $recent)
-                                @if (!$loop->first)
-                                    @if ($loop->index==1)
+                                @if ($loop->index>1)
+                                    @if ($loop->index==2)
                                         <div class="col-lg-4 border-start custom-border">
                                     @endif
-                                    @if ($loop->index==4)
+                                    @if ($loop->index==5)
                                         </div><div class="col-lg-4 border-start custom-border">
                                     @endif
                                     <div class="post-entry">
@@ -45,9 +56,8 @@
                                     @if ($loop->last)
                                         </div>
                                     @endif
-                                    @if ($loop->last and $loop->index < 4)
+                                    @if ($loop->last and $loop->index < 5)
                                         <div class="col-lg-4 border-start custom-border">
-                                            Anyone?
                                         </div>
                                     @endif
                                 @endif
