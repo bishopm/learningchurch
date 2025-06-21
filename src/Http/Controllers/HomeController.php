@@ -87,7 +87,7 @@ class HomeController extends Controller
                 $data['latest'][]=$item;
             }
         }
-        $data['latest']=array_slice($data['latest'],0,7);
+        $data['latest']=array_slice($data['latest'],0,8);
         return view('learningchurch::web.home',$data);
     }
 
